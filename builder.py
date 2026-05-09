@@ -7,11 +7,9 @@ import time
 import logging
 
 # Configuración de Logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(levelname)s: %(message)s'
-)
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger("R4Builder")
+
 
 class R4Builder:
     def __init__(self, manifest_path="manifest.json", build_dir="build"):
@@ -27,7 +25,7 @@ class R4Builder:
         if not os.path.exists(self.manifest_path):
             logger.error(f"No se encontró {self.manifest_path}")
             return None
-        with open(self.manifest_path, 'r', encoding='utf-8') as f:
+        with open(self.manifest_path, "r", encoding="utf-8") as f:
             return json.load(f)
 
     def _clear_and_create(self, path):
@@ -44,9 +42,11 @@ class R4Builder:
     def fetch_tools(self):
         logger.info("--- Iniciando descarga de herramientas dinámicas ---")
         os.makedirs(self.download_dir, exist_ok=True)
-        
-        for tool in self.manifest['tools']:
-            url, filename = self._get_latest_release(tool['repo'], tool['asset_pattern'])
+
+        for tool in self.manifest["tools"]:
+            url, filename = self._get_latest_release(
+                tool["repo"], tool["asset_pattern"]
+            )
             if url:
                 dest = os.path.join(self.download_dir, filename)
                 if not os.path.exists(dest):
@@ -62,9 +62,9 @@ class R4Builder:
             response = requests.get(api_url, timeout=10)
             response.raise_for_status()
             data = response.json()
-            for asset in data.get('assets', []):
-                if pattern.lower() in asset['name'].lower():
-                    return asset['browser_download_url'], asset['name']
+            for asset in data.get("assets", []):
+                if pattern.lower() in asset["name"].lower():
+                    return asset["browser_download_url"], asset["name"]
         except Exception as e:
             logger.debug(f"Error consultando {repo}: {e}")
         return None, None
@@ -73,7 +73,7 @@ class R4Builder:
         logger.info(f"  - Descargando {os.path.basename(dest)}...")
         with requests.get(url, stream=True) as r:
             r.raise_for_status()
-            with open(dest, 'wb') as f:
+            with open(dest, "wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
 
@@ -89,7 +89,7 @@ class R4Builder:
         logger.info("  - Inyectando archivos del sistema y configuraciones...")
         for file in os.listdir("templates/bootloaders"):
             shutil.copy(os.path.join("templates/bootloaders", file), self.sd_final_dir)
-        
+
         for file in os.listdir("templates/configs"):
             if "snemul" in file:
                 shutil.copy(os.path.join("templates/configs", file), self.sd_final_dir)
@@ -98,13 +98,18 @@ class R4Builder:
                 shutil.copy(os.path.join("templates/configs", file), dest_config)
 
         # 3. Dynamic Tools
-        for tool in self.manifest['tools']:
+        for tool in self.manifest["tools"]:
             # Lógica de búsqueda de archivo descargado
             for file in os.listdir(self.download_dir):
-                if tool['asset_pattern'].lower() in file.lower():
+                if tool["asset_pattern"].lower() in file.lower():
                     filepath = os.path.join(self.download_dir, file)
                     if file.endswith(".nds"):
-                        shutil.copy(filepath, os.path.join(self.sd_final_dir, tool['target_dir'].strip('/'), file))
+                        shutil.copy(
+                            filepath,
+                            os.path.join(
+                                self.sd_final_dir, tool["target_dir"].strip("/"), file
+                            ),
+                        )
                     elif file.endswith(".7z") or file.endswith(".zip"):
                         self._extract_and_merge(filepath, self.sd_final_dir)
 
@@ -113,7 +118,9 @@ class R4Builder:
 
     def _extract_and_merge(self, filepath, dest):
         self._clear_and_create(self.temp_extract)
-        subprocess.run(['tar', '-xf', filepath, '-C', self.temp_extract], capture_output=True)
+        subprocess.run(
+            ["tar", "-xf", filepath, "-C", self.temp_extract], capture_output=True
+        )
         shutil.copytree(self.temp_extract, dest, dirs_exist_ok=True)
         try:
             shutil.rmtree(self.temp_extract)
@@ -126,7 +133,7 @@ class R4Builder:
             "_nds/TWiLightMenu/extras",
             "_nds/TWiLightMenu/cheats",
             "BOOT_ALT.NDS",
-            "nds-bootstrap-hb-release.nds"
+            "nds-bootstrap-hb-release.nds",
         ]
         for item in to_remove:
             path = os.path.join(self.sd_final_dir, item)
@@ -135,6 +142,7 @@ class R4Builder:
                     shutil.rmtree(path)
                 else:
                     os.remove(path)
+
 
 if __name__ == "__main__":
     builder = R4Builder()
