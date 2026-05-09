@@ -1,0 +1,17 @@
+# ROMs y BIOS
+*.nds
+*.gba
+*.gb
+*.gbc
+*.nes
+*.sfc
+*.bin
+
+# Partidas guardadas
+*.sav
+
+# Sistema y temporales
+_tmp/
+archive/
+.DS_Store
+Thumbs.db
