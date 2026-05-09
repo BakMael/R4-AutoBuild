@@ -11,7 +11,7 @@
     {
       "name": "nds-bootstrap",
       "repo": "DS-Homebrew/nds-bootstrap",
-      "asset_pattern": "nds-bootstrap.release.zip",
+      "asset_pattern": "bootstrap.7z",
       "target_dir": "/_nds"
     },
     {
@@ -19,60 +19,6 @@
       "repo": "DS-Homebrew/GodMode9i",
       "asset_pattern": "GodMode9i.nds",
       "target_dir": "/apps"
-    },
-    {
-      "name": "Universal-Updater",
-      "repo": "Universal-Team/Universal-Updater",
-      "asset_pattern": "Universal-Updater.nds",
-      "target_dir": "/apps"
-    },
-    {
-      "name": "GBARunner2",
-      "repo": "Gericom/GBARunner2",
-      "asset_pattern": "GBARunner2.nds",
-      "target_dir": "/apps/emulators"
-    },
-    {
-      "name": "GBARunner3",
-      "repo": "Gericom/GBARunner3",
-      "asset_pattern": ".nds",
-      "target_dir": "/apps/emulators"
-    },
-    {
-      "name": "GameYob",
-      "repo": "Drenn1/GameYob",
-      "asset_pattern": "GameYob.nds",
-      "target_dir": "/apps/emulators"
-    },
-    {
-      "name": "nesDS",
-      "repo": "FluBBaOfWard/nesDS",
-      "asset_pattern": "nesDS.nds",
-      "target_dir": "/apps/emulators"
-    },
-    {
-      "name": "NitroGrafx",
-      "repo": "FluBBaOfWard/NitroGrafx",
-      "asset_pattern": "NitroGrafx.nds",
-      "target_dir": "/apps/emulators"
-    },
-    {
-      "name": "StellaDS",
-      "repo": "FluBBaOfWard/StellaDS",
-      "asset_pattern": "StellaDS.nds",
-      "target_dir": "/apps/emulators"
-    },
-    {
-      "name": "S8DS",
-      "repo": "FluBBaOfWard/S8DS",
-      "asset_pattern": "S8DS.nds",
-      "target_dir": "/apps/emulators"
-    },
-    {
-      "name": "ColecoDS",
-      "repo": "FluBBaOfWard/ColecoDS",
-      "asset_pattern": "ColecoDS.nds",
-      "target_dir": "/apps/emulators"
     }
   ]
 }

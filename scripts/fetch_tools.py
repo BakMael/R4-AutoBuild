@@ -1,19 +1,30 @@
 import requests
 import os
 import json
-import subprocess
 
 def get_latest_release_asset(repo, pattern):
     api_url = f"https://api.github.com/repos/{repo}/releases/latest"
     try:
         response = requests.get(api_url)
-        response.raise_for_status()
+        if response.status_code != 200:
+            print(f"DEBUG: {repo} no tiene releases oficiales o es privado.")
+            return None, None
+        
         data = response.json()
-        for asset in data.get('assets', []):
+        assets = data.get('assets', [])
+        
+        # DEBUG: Imprimir qué archivos hay si no encontramos el patrón
+        found_names = [a['name'] for a in assets]
+        
+        for asset in assets:
             if pattern.lower() in asset['name'].lower():
                 return asset['browser_download_url'], asset['name']
-    except:
-        pass
+        
+        if assets:
+            print(f"DEBUG: En {repo} se encontraron: {', '.join(found_names)} pero ninguno coincide con '{pattern}'")
+            
+    except Exception as e:
+        print(f"Error en {repo}: {e}")
     return None, None
 
 def download_file(url, dest):
@@ -38,7 +49,8 @@ def main():
             else:
                 print(f"Ya existe: {filename}")
         else:
-            print(f"Error: {tool['name']} no encontrado en GitHub.")
+            # Si falla, no hacemos nada extra, el DEBUG de arriba ya nos dirá qué pasó
+            pass
 
 if __name__ == "__main__":
     main()

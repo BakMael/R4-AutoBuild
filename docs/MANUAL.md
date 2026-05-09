@@ -35,6 +35,9 @@ El sistema real es TWiLight Menu++ + nds-bootstrap.
 ```
 
 **Principios:**
+- [x] Estructura de carpetas optimizada.
+- [x] Configuración de TWiLight Menu++ y nds-bootstrap.
+- [x] Autoboot configurado para R4i-SDHC (B6-V2.8).
 - **Menos = mejor.** Solo lo esencial + lo que realmente uses
 - **Híbrido:** Interfaz moderna (TWiLight) con fallback infalible (YSMenu)
 - **ROMs limpias:** No-Intro, sin trim, sin patches manuales — nds-bootstrap parchea al vuelo
@@ -116,7 +119,7 @@ Reemplazo moderno de kernel. Simplemente bootea `BOOT.NDS` de la raíz.
 
 | Software | Función | Repo |
 |----------|---------|------|
-| **TWiLight Menu++** | Launcher universal, UI moderna, soporte themes/boxart/cheats | [DS-Homebrew/TWiLightMenu](https://github.com/DS-Homebrew/TWiLightMenu) |
+| **TWiLight Menu++** | Launcher universal, UI moderna, soporte themes/boxart | [DS-Homebrew/TWiLightMenu](https://github.com/DS-Homebrew/TWiLightMenu) |
 | **nds-bootstrap** | Motor que carga .nds desde SD, AP patch automático, widescreen | [DS-Homebrew/nds-bootstrap](https://github.com/DS-Homebrew/nds-bootstrap) |
 
 ### Tier 1 — Altamente recomendado
@@ -196,11 +199,6 @@ Reemplazo moderno de kernel. Simplemente bootea `BOOT.NDS` de la raíz.
 
 ## 7. 🎨 Extras y QoL
 
-### Cheats
-- **DeadSkullzJr Cheat Database** — La más completa
-- Ubicación: `/_nds/TWiLightMenu/extras/usrcheat.dat`
-- [GBAtemp thread](https://gbatemp.net/threads/deadskullzjrs-nds-cheat-databases.488711/)
-
 ### Boxart / Carátulas
 - Usar **TWiLight Menu++ Offline Updater**
 - Resolución ideal: **128×115 px** (NO imágenes grandes, ralentizan el menú)
@@ -217,7 +215,6 @@ Reemplazo moderno de kernel. Simplemente bootea `BOOT.NDS` de la raíz.
 
 ### Per-Game Settings en TWiLight
 - Sobre un juego: **Y** → configuración individual
-- **X** → menú de cheats (seleccionar con A, guardar con X)
 - Permite ajustar loader, velocidad CPU, aspect ratio por juego
 
 ---
@@ -241,8 +238,6 @@ Raíz MicroSD/
 │
 ├── _nds/                         # ← Sistema TWiLight Menu++ (NO tocar)
 │   └── TWiLightMenu/
-│       └── extras/
-│           └── usrcheat.dat      # Cheats DeadSkullzJr
 │
 ├── BOOT.NDS                      # ← TWiLight Menu++ (autoboot via flashcard-bootstrap)
 │
@@ -316,9 +311,9 @@ Raíz MicroSD/
 2. Colocar en `/apps/emulators/`
 3. Copiar `bios.bin` GBA a `/roms/gba/` y `/_nds/`
 
-### Paso 6: Agregar cheats
-1. Descargar `usrcheat.dat` de DeadSkullzJr
-2. Colocar en `/_nds/TWiLightMenu/extras/`
+### Paso 6: Agregar
+- **Soft Reset:** `L+R+Down+B` (Regresa al menú de TWiLight desde un juego)
+- **Carga Rápida:** Los ROMs se parchean al vuelo, sin esperas.
 
 ### Paso 7: Organizar ROMs
 1. Crear estructura de carpetas como sección 9
