@@ -14,11 +14,22 @@ Este archivo registra el progreso del proyecto. Una vez que el repositorio esté
 - [x] **Script de Ensamblaje (Build)**: Unificar descargas + plantillas en una carpeta final lista para usar.
 
 ## 🔍 Fase de Validación y Pruebas (LOCAL)
-- [ ] **Transferencia a SD**: Copiar `build/SD_Final` a la MicroSD física.
-- [ ] **Prueba de Arranque**: Confirmar que la R4 inicia directamente en TWiLight Menu++.
-- [ ] **Verificación de Emuladores**: Probar que los emuladores estáticos abren correctamente.
-- [ ] **Verificación de Herramientas**: Abrir GodMode9i desde la carpeta `apps`.
-- [ ] **Ajuste de Configs**: Validar que el idioma y temas se aplicaron bien.
+- [x] **Transferencia a SD**: Copiar `build/SD_Final` a la MicroSD física.
+- [x] **Prueba de Arranque**: Confirmar que la R4 inicia directamente en TWiLight Menu++.
+- [x] **Verificación de Emuladores**: Probar que los emuladores estáticos abren correctamente.
+- [x] **Verificación de Herramientas**: Abrir GodMode9i desde la carpeta `apps`.
+- [x] **Ajuste de Configs**: Validar que el idioma y temas se aplicaron bien.
+
+## 🛠️ Fase de Refactorización y Limpieza (Code Quality)
+- [x] **Unificar Scripts**: Fusionar `fetch_tools.py` y `assemble_sd.py` en un solo motor `builder.py`.
+- [x] **Limpieza de Temporales**: Borrar `_extract_test/` y carpetas de build local.
+- [x] **Logging y UX**: Mejorar los mensajes de consola con niveles de log (INFO, ERROR).
+
+## 🧪 Fase 5: Calidad de Software y CI/CD
+- [x] **Dependencias**: Crear `requirements.txt`.
+- [x] **Linters & Formatters**: Configurar **Ruff** (análisis estático) y **Black** (formato).
+- [x] **Unit Testing**: Crear pruebas básicas con `pytest` para validar el `manifest.json`.
+- [x] **Pipeline CI/CD**: Configurar GitHub Actions para ejecutar Linters y Tests en cada cambio.
 
 ## 🔵 Fase 3: Configuración de Git y Publicación
 - [x] **Inicializar Git**: `git init` en la raíz.

@@ -1,23 +1,25 @@
-# ?? NDS R4 Ultimate Repository
+# R4-ABS (Auto-Build System)
 
-Este repositorio contiene la configuraci�n, herramientas y documentaci�n necesaria para crear el setup definitivo en una flashcard R4 para Nintendo DS.
+Sistema automatizado para la creación y mantenimiento del setup definitivo de MicroSD para flashcarts R4 (NDS).
 
-## ?? Estructura del Proyecto
+## 🎯 Objetivo
+Eliminar la gestión manual de archivos. Este repositorio utiliza **GitHub Actions** para descargar, configurar y empaquetar automáticamente las últimas versiones de:
+- **TWiLight Menu++** (Launcher)
+- **nds-bootstrap** (Kernel/Loader)
+- **Emuladores** (NES, GB, GBC, SNES, GBA, etc.)
+- **Herramientas de sistema** (GodMode9i)
 
-*   **/docs**: Gu�as detalladas, lista de recursos y planes de desarrollo.
-    *   [MANUAL.md](docs/MANUAL.md): Gu�a maestra de instalaci�n.
-    *   [RECURSOS.md](docs/RECURSOS.md): Enlaces a emuladores, homebrew y wikis.
-    *   [AUTOBUILD.md](docs/AUTOBUILD.md): Plan de automatizaci�n.
-*   **/templates**: Archivos base y configuraciones para la MicroSD.
-*   **/scripts**: Scripts de automatizaci�n (en desarrollo).
-*   **/archive**: Resguardos temporales.
+## ⚠️ Requisito Crítico
+Para que la R4 reconozca la MicroSD, esta **DEBE** estar formateada con:
+- **Sistema de archivos:** FAT32
+- **Tabla de particiones:** MBR
+- **Cluster size:** 32KB (recomendado)
 
-## ?? Estado Actual
-
-- [x] Estructura de carpetas optimizada.
-- [x] Configuraci�n de TWiLight Menu++ y nds-bootstrap.
-- [x] Autoboot configurado para R4i-SDHC (B6-V2.8).
-- [ ] Script de auto-build (Pr�ximamente).
+## 🚀 Cómo obtener el setup
+No es necesario ejecutar nada localmente. Ve a la sección de **Releases** de este repositorio y descarga el archivo `.zip` más reciente.
+1. Extrae el contenido en la raíz de tu MicroSD.
+2. Añade tus juegos en la carpeta `/roms/`.
+3. ¡Listo para jugar!
 
 ---
-> *Mantenlo simple. Mantenlo limpio.*
+*Automatizado mensualmente con GitHub Actions.*

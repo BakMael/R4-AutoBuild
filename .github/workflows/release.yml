@@ -1,0 +1,43 @@
+name: Monthly Auto-Release
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # Primer día de cada mes
+  workflow_dispatch: # Botón manual
+
+jobs:
+  build:
+    runs-on: windows-latest # Necesitamos Windows para usar el comando 'tar' nativo del script
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        
+    - name: Install dependencies
+      run: pip install requests
+        
+    - name: Run Builder
+      run: python builder.py
+      
+    - name: Package Release
+      run: |
+        tar -a -c -f R4-Ultimate-Setup.zip -C build/SD_Final .
+        
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: build-${{ github.run_number }}
+        name: R4 Ultimate Setup - ${{ github.run_at }}
+        files: R4-Ultimate-Setup.zip
+        body: |
+          Setup generado automáticamente por el sistema R4-ABS.
+          Fecha: ${{ github.run_at }}
+          
+          Instrucciones:
+          1. Extraer el .zip en la raíz de tu SD (FAT32).
+          2. Añade tus juegos en la carpeta /roms.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
