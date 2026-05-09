@@ -27,7 +27,7 @@ class R4Builder:
         if not os.path.exists(self.manifest_path):
             logger.error(f"No se encontró {self.manifest_path}")
             return None
-        with open(self.manifest_path, 'r') as f:
+        with open(self.manifest_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
     def _clear_and_create(self, path):
