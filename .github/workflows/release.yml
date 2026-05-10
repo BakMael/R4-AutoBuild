@@ -5,6 +5,9 @@ on:
     - cron: '0 0 1 * *' # Primer día de cada mes
   workflow_dispatch: # Botón manual
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest # Necesitamos Windows para usar el comando 'tar' nativo del script
