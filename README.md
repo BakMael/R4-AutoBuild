@@ -9,6 +9,11 @@ Eliminate manual file management. This repository uses **GitHub Actions** to aut
 - **Emulators** (NES, GB, GBC, SNES, GBA, etc.)
 - **System Tools** (GodMode9i)
 
+## ✨ Key Features
+- **🚀 Timebomb Bypass:** Bypasses official kernel limitations and date-locks by booting directly into a modern homebrew environment.
+- **📦 Automated Setup:** Automatically fetches and configures the latest versions of **TWiLight Menu++** and **nds-bootstrap**.
+- **🎮 All-in-One:** Comes with pre-configured emulators for NES, SNES, GB, GBC, Genesis, and more.
+
 ## ⚠️ Critical Requirement
 For the flashcart to recognize the MicroSD, it **MUST** be formatted as:
 - **File System:** FAT32
