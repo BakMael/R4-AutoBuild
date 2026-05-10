@@ -114,6 +114,12 @@ class R4Builder:
                     elif file.endswith(".7z") or file.endswith(".zip"):
                         self._extract_and_merge(filepath, self.sd_final_dir)
 
+        # Limpiar rastros de .gitkeep
+        for root, dirs, files in os.walk(self.sd_final_dir):
+            for file in files:
+                if file == ".gitkeep":
+                    os.remove(os.path.join(root, file))
+
         self.clean_bloat()
         logger.info(f"[SUCCESS] Build completado en {self.sd_final_dir}")
 
