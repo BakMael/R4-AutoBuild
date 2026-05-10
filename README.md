@@ -23,3 +23,13 @@ No es necesario ejecutar nada localmente. Ve a la sección de **Releases** de es
 
 ---
 *Automatizado mensualmente con GitHub Actions.*
+
+## 🙏 Créditos y Agradecimientos
+
+Este proyecto es posible gracias al increíble trabajo de la comunidad homebrew de Nintendo DS:
+
+- **[DS-Homebrew](https://github.com/DS-Homebrew)**: Por `TWiLight Menu++`, `nds-bootstrap` y `GodMode9i`.
+- **[LifehackerHansol](https://github.com/lifehackerhansol)**: Por los kernels y cargadores universales.
+- **Autores de Emuladores**: GameYob (D_S_O), nesDS (Loopy/Dwedit), SNEmulDS (Archeide), NitroGrafx (FluBBa), PicoDrive (Notaz/Irastussa), ColecoDS (Alekmaul).
+
+Agradecimientos especiales a **GBATemp** y la comunidad de **DS-Homebrew Wiki** por la documentación y preservación del software.

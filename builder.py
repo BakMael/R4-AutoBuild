@@ -55,7 +55,9 @@ class R4Builder:
                 else:
                     logger.info(f"  - {tool['name']} ya está actualizado.")
             else:
-                logger.warning(f"  - No se pudo encontrar release para {tool['name']}")
+                error_msg = f"CRITICAL: No se pudo encontrar release para {tool['name']} en el repositorio {tool['repo']}"
+                logger.error(error_msg)
+                raise RuntimeError(error_msg)
 
     def _get_latest_release(self, repo, pattern):
         api_url = f"https://api.github.com/repos/{repo}/releases/latest"
