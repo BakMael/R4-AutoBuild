@@ -1,6 +1,6 @@
-# R4-ABS (Auto-Build System)
+# NDS-HB-ABS (Homebrew Auto-Build System)
 
-An automated system for creating and maintaining the ultimate MicroSD setup for R4 flashcarts (NDS).
+An automated system for creating and maintaining the ultimate MicroSD setup for Nintendo DS flashcarts.
 
 ## 🎯 Goal
 Eliminate manual file management. This repository uses **GitHub Actions** to automatically download, configure, and package the latest versions of:
@@ -10,7 +10,7 @@ Eliminate manual file management. This repository uses **GitHub Actions** to aut
 - **System Tools** (GodMode9i)
 
 ## ⚠️ Critical Requirement
-For the R4 to recognize the MicroSD, it **MUST** be formatted as:
+For the flashcart to recognize the MicroSD, it **MUST** be formatted as:
 - **File System:** FAT32
 - **Partition Table:** MBR
 - **Cluster Size:** 32KB (recommended)

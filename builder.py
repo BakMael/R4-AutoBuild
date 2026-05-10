@@ -9,10 +9,10 @@ import requests
 
 # Logging Configuration
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-logger = logging.getLogger("R4Builder")
+logger = logging.getLogger("NDSBuilder")
 
 
-class R4Builder:
+class NDSBuilder:
     def __init__(self, manifest_path="manifest.json", build_dir="build"):
         self.root_path = os.getcwd()
         self.manifest_path = os.path.join(self.root_path, manifest_path)
@@ -151,7 +151,7 @@ class R4Builder:
 
 
 if __name__ == "__main__":
-    builder = R4Builder()
+    builder = NDSBuilder()
     if builder.manifest:
         builder.fetch_tools()
         builder.assemble()
