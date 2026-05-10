@@ -7,7 +7,7 @@ import time
 
 import requests
 
-# Configuración de Logging
+# Logging Configuration
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger("R4Builder")
 
@@ -24,7 +24,7 @@ class R4Builder:
 
     def _load_manifest(self):
         if not os.path.exists(self.manifest_path):
-            logger.error(f"No se encontró {self.manifest_path}")
+            logger.error(f"Manifest not found: {self.manifest_path}")
             return None
         with open(self.manifest_path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -41,21 +41,19 @@ class R4Builder:
         os.makedirs(path, exist_ok=True)
 
     def fetch_tools(self):
-        logger.info("--- Iniciando descarga de herramientas dinámicas ---")
+        logger.info("--- Starting dynamic tools download ---")
         os.makedirs(self.download_dir, exist_ok=True)
 
         for tool in self.manifest["tools"]:
-            url, filename = self._get_latest_release(
-                tool["repo"], tool["asset_pattern"]
-            )
+            url, filename = self._get_latest_release(tool["repo"], tool["asset_pattern"])
             if url:
                 dest = os.path.join(self.download_dir, filename)
                 if not os.path.exists(dest):
                     self._download_file(url, dest)
                 else:
-                    logger.info(f"  - {tool['name']} ya está actualizado.")
+                    logger.info(f"  - {tool['name']} is already up to date.")
             else:
-                error_msg = f"CRITICAL: No se pudo encontrar release para {tool['name']} en el repositorio {tool['repo']}"
+                error_msg = f"CRITICAL: Could not find release for {tool['name']} in repo {tool['repo']}"
                 logger.error(error_msg)
                 raise RuntimeError(error_msg)
 
@@ -69,11 +67,11 @@ class R4Builder:
                 if pattern.lower() in asset["name"].lower():
                     return asset["browser_download_url"], asset["name"]
         except Exception as e:
-            logger.debug(f"Error consultando {repo}: {e}")
+            logger.debug(f"Error querying {repo}: {e}")
         return None, None
 
     def _download_file(self, url, dest):
-        logger.info(f"  - Descargando {os.path.basename(dest)}...")
+        logger.info(f"  - Downloading {os.path.basename(dest)}...")
         with requests.get(url, stream=True) as r:
             r.raise_for_status()
             with open(dest, "wb") as f:
@@ -81,15 +79,15 @@ class R4Builder:
                     f.write(chunk)
 
     def assemble(self):
-        logger.info("--- Iniciando ensamblaje de la SD ---")
+        logger.info("--- Starting SD assembly ---")
         self._clear_and_create(self.sd_final_dir)
 
         # 1. Base Structure
-        logger.info("  - Aplicando estructura base...")
+        logger.info("  - Applying base structure...")
         shutil.copytree("templates/sd_structure", self.sd_final_dir, dirs_exist_ok=True)
 
         # 2. Bootloaders and Configs
-        logger.info("  - Inyectando archivos del sistema y configuraciones...")
+        logger.info("  - Injecting system files and configurations...")
         for file in os.listdir("templates/bootloaders"):
             shutil.copy(os.path.join("templates/bootloaders", file), self.sd_final_dir)
 
@@ -102,7 +100,6 @@ class R4Builder:
 
         # 3. Dynamic Tools
         for tool in self.manifest["tools"]:
-            # Lógica de búsqueda de archivo descargado
             for file in os.listdir(self.download_dir):
                 if tool["asset_pattern"].lower() in file.lower():
                     filepath = os.path.join(self.download_dir, file)
@@ -116,14 +113,14 @@ class R4Builder:
                     elif file.endswith(".7z") or file.endswith(".zip"):
                         self._extract_and_merge(filepath, self.sd_final_dir)
 
-        # Limpiar rastros de .gitkeep
+        # Clean up .gitkeep files
         for root, dirs, files in os.walk(self.sd_final_dir):
             for file in files:
                 if file == ".gitkeep":
                     os.remove(os.path.join(root, file))
 
         self.clean_bloat()
-        logger.info(f"[SUCCESS] Build completado en {self.sd_final_dir}")
+        logger.info(f"[SUCCESS] Build completed at {self.sd_final_dir}")
 
     def _extract_and_merge(self, filepath, dest):
         self._clear_and_create(self.temp_extract)
@@ -137,7 +134,7 @@ class R4Builder:
             pass
 
     def clean_bloat(self):
-        logger.info("  - Ejecutando limpieza Zero-Bloat...")
+        logger.info("  - Executing Zero-Bloat cleanup...")
         to_remove = [
             "_nds/TWiLightMenu/extras",
             "_nds/TWiLightMenu/cheats",

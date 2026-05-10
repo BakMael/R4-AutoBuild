@@ -1,35 +1,35 @@
 # R4-ABS (Auto-Build System)
 
-Sistema automatizado para la creación y mantenimiento del setup definitivo de MicroSD para flashcarts R4 (NDS).
+An automated system for creating and maintaining the ultimate MicroSD setup for R4 flashcarts (NDS).
 
-## 🎯 Objetivo
-Eliminar la gestión manual de archivos. Este repositorio utiliza **GitHub Actions** para descargar, configurar y empaquetar automáticamente las últimas versiones de:
+## 🎯 Goal
+Eliminate manual file management. This repository uses **GitHub Actions** to automatically download, configure, and package the latest versions of:
 - **TWiLight Menu++** (Launcher)
 - **nds-bootstrap** (Kernel/Loader)
-- **Emuladores** (NES, GB, GBC, SNES, GBA, etc.)
-- **Herramientas de sistema** (GodMode9i)
+- **Emulators** (NES, GB, GBC, SNES, GBA, etc.)
+- **System Tools** (GodMode9i)
 
-## ⚠️ Requisito Crítico
-Para que la R4 reconozca la MicroSD, esta **DEBE** estar formateada con:
-- **Sistema de archivos:** FAT32
-- **Tabla de particiones:** MBR
-- **Cluster size:** 32KB (recomendado)
+## ⚠️ Critical Requirement
+For the R4 to recognize the MicroSD, it **MUST** be formatted as:
+- **File System:** FAT32
+- **Partition Table:** MBR
+- **Cluster Size:** 32KB (recommended)
 
-## 🚀 Cómo obtener el setup
-No es necesario ejecutar nada localmente. Ve a la sección de **Releases** de este repositorio y descarga el archivo `.zip` más reciente.
-1. Extrae el contenido en la raíz de tu MicroSD.
-2. Añade tus juegos en la carpeta `/roms/`.
-3. ¡Listo para jugar!
+## 🚀 How to get the setup
+There is no need to run anything locally. Go to the **Releases** section of this repository and download the latest `.zip` file.
+1. Extract the content to the root of your MicroSD.
+2. Add your games to the `/roms/` folder.
+3. Ready to play!
 
 ---
-*Automatizado mensualmente con GitHub Actions.*
+*Automatically updated monthly via GitHub Actions.*
 
-## 🙏 Créditos y Agradecimientos
+## 🙏 Credits and Acknowledgments
 
-Este proyecto es posible gracias al increíble trabajo de la comunidad homebrew de Nintendo DS:
+This project is made possible thanks to the incredible work of the Nintendo DS homebrew community:
 
-- **[DS-Homebrew](https://github.com/DS-Homebrew)**: Por `TWiLight Menu++`, `nds-bootstrap` y `GodMode9i`.
-- **[LifehackerHansol](https://github.com/lifehackerhansol)**: Por los kernels y cargadores universales.
-- **Autores de Emuladores**: GameYob (D_S_O), nesDS (Loopy/Dwedit), SNEmulDS (Archeide), NitroGrafx (FluBBa), PicoDrive (Notaz/Irastussa), ColecoDS (Alekmaul).
+- **[DS-Homebrew](https://github.com/DS-Homebrew)**: For `TWiLight Menu++`, `nds-bootstrap`, and `GodMode9i`.
+- **[LifehackerHansol](https://github.com/lifehackerhansol)**: For universal kernels and loaders.
+- **Emulator Authors**: GameYob (D_S_O), nesDS (Loopy/Dwedit), SNEmulDS (Archeide), NitroGrafx (FluBBa), PicoDrive (Notaz/Irastussa), ColecoDS (Alekmaul).
 
-Agradecimientos especiales a **GBATemp** y la comunidad de **DS-Homebrew Wiki** por la documentación y preservación del software.
+Special thanks to **GBATemp** and the **DS-Homebrew Wiki** community for documentation and software preservation.
