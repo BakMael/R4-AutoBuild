@@ -26,10 +26,21 @@ There is no need to run anything locally. Go to the **Releases** section of this
 
 ## 🙏 Credits and Acknowledgments
 
-This project is made possible thanks to the incredible work of the Nintendo DS homebrew community:
+This project is built upon the incredible work of the Nintendo DS homebrew community:
 
-- **[DS-Homebrew](https://github.com/DS-Homebrew)**: For `TWiLight Menu++`, `nds-bootstrap`, and `GodMode9i`.
-- **[LifehackerHansol](https://github.com/lifehackerhansol)**: For universal kernels and loaders.
-- **Emulator Authors**: GameYob (D_S_O), nesDS (Loopy/Dwedit), SNEmulDS (Archeide), NitroGrafx (FluBBa), PicoDrive (Notaz/Irastussa), ColecoDS (Alekmaul).
+### 🛠️ Core Components
+- **Launcher:** [TWiLight Menu++](https://github.com/DS-Homebrew/TWiLightMenu)
+- **Kernel/Loader:** [nds-bootstrap](https://github.com/DS-Homebrew/nds-bootstrap)
+- **System Tool:** [GodMode9i](https://github.com/DS-Homebrew/GodMode9i)
+- **Custom Kernels:** [Universal Flashcard Loader](https://github.com/lifehackerhansol)
+
+### 🕹️ Included Emulators
+- **GB/GBC:** [GameYob](https://github.com/D-S-O/GameYob)
+- **NES:** [nesDS](https://github.com/Arisotura/nesDS)
+- **SNES:** [SNEmulDS](https://github.com/fiv0/SNEmulDS)
+- **Genesis:** [PicoDrive](https://github.com/irastussa/PicoDriveTWL)
+- **Master System/GG:** [S8DS](https://github.com/S8DS)
+- **ColecoVision:** [ColecoDS](https://github.com/a-p-p-l-e-s/ColecoDS)
+- **PC Engine:** [NitroGrafx](https://github.com/FluBBa/NitroGrafx)
 
 Special thanks to **GBATemp** and the **DS-Homebrew Wiki** community for documentation and software preservation.
