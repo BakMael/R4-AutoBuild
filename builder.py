@@ -45,7 +45,9 @@ class NDSBuilder:
         os.makedirs(self.download_dir, exist_ok=True)
 
         for tool in self.manifest["tools"]:
-            url, filename = self._get_latest_release(tool["repo"], tool["asset_pattern"])
+            url, filename = self._get_latest_release(
+                tool["repo"], tool["asset_pattern"]
+            )
             if url:
                 dest = os.path.join(self.download_dir, filename)
                 if not os.path.exists(dest):
@@ -53,7 +55,10 @@ class NDSBuilder:
                 else:
                     logger.info(f"  - {tool['name']} is already up to date.")
             else:
-                error_msg = f"CRITICAL: Could not find release for {tool['name']} in repo {tool['repo']}"
+                error_msg = (
+                    f"CRITICAL: Could not find release for {tool['name']} "
+                    f"in repo {tool['repo']}"
+                )
                 logger.error(error_msg)
                 raise RuntimeError(error_msg)
 
