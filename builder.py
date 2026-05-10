@@ -1,10 +1,11 @@
+import json
+import logging
 import os
 import shutil
-import json
-import requests
 import subprocess
 import time
-import logging
+
+import requests
 
 # Configuración de Logging
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -124,7 +125,7 @@ class R4Builder:
         shutil.copytree(self.temp_extract, dest, dirs_exist_ok=True)
         try:
             shutil.rmtree(self.temp_extract)
-        except:
+        except Exception:
             pass
 
     def clean_bloat(self):
